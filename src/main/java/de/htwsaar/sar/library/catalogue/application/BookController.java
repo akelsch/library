@@ -1,5 +1,7 @@
-package de.htwsaar.sar.library.catalogue;
+package de.htwsaar.sar.library.catalogue.application;
 
+import de.htwsaar.sar.library.catalogue.domain.Book;
+import de.htwsaar.sar.library.catalogue.domain.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

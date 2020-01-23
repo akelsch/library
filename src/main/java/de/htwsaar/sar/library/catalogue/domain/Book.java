@@ -1,4 +1,4 @@
-package de.htwsaar.sar.library.catalogue;
+package de.htwsaar.sar.library.catalogue.domain;
 
 import lombok.Data;
 
