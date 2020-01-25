@@ -17,12 +17,12 @@ public class BookInstanceController {
     }
 
     @GetMapping
-    public Iterable<BookInstance> displayAllBookInstancesForIsbn(String isbn) {
+    public Iterable<BookInstance> listAllBookInstances(String isbn) {
         return bookInstanceRepository.findAllByIsbn(isbn);
     }
 
     @PostMapping
-    public BookInstance addBookInstanceToCatalogue(@RequestBody BookInstance bookInstance) {
+    public BookInstance addSingleBookInstance(@RequestBody BookInstance bookInstance) {
         return bookInstanceRepository.save(bookInstance);
     }
 }

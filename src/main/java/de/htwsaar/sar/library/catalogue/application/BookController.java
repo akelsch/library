@@ -17,12 +17,12 @@ public class BookController {
     }
 
     @GetMapping
-    public Iterable<Book> displayCatalogue() {
+    public Iterable<Book> listAllBooks() {
         return bookRepository.findAll();
     }
 
     @PostMapping
-    public Book addBookToCatalogue(@RequestBody Book book) {
+    public Book addSingleBook(@RequestBody Book book) {
         return bookRepository.save(book);
     }
 }
