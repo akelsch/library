@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class CatalogueService {
@@ -26,6 +28,11 @@ public class CatalogueService {
     }
 
     public BookInstance saveBookInstance(BookInstance bookInstance) {
+        Optional<Book> book = bookRepository.findById(bookInstance.getIsbn());
+        if (book.isEmpty()) {
+            throw new IllegalStateException("Creating book instance for non-existing book!");
+        }
+
         bookInstanceRepository.save(bookInstance);
         applicationEventPublisher.publishEvent(new BookInstanceAddedToCatalogueEvent(this, bookInstance));
         return bookInstance;

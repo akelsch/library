@@ -12,8 +12,8 @@ public class BookInstanceController {
 
     public final CatalogueService catalogueService;
 
-    @GetMapping
-    public Iterable<BookInstance> listAllBookInstances(String isbn) {
+    @GetMapping("/{isbn}")
+    public Iterable<BookInstance> listAllBookInstances(@PathVariable String isbn) {
         return catalogueService.findAllBookInstancesByIsbn(isbn);
     }
 
