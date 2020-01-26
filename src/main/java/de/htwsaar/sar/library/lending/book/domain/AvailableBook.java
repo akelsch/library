@@ -7,5 +7,5 @@ import java.util.UUID;
 @Value
 public class AvailableBook implements Book {
 
-    private UUID id;
+    private final UUID bookId;
 }

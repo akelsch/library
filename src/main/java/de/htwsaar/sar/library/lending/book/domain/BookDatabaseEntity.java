@@ -13,13 +13,13 @@ public class BookDatabaseEntity {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long row;
 
     private UUID bookId;
 
     private BookState bookState;
 
-    private UUID checkOutByStudent;
+    private Long checkedOutByStudent;
 
     public Book toDomainModel() {
         return switch (bookState) {
@@ -33,6 +33,6 @@ public class BookDatabaseEntity {
     }
 
     private CheckedOutBook toCheckedOutBook() {
-        return new CheckedOutBook(bookId, checkOutByStudent);
+        return new CheckedOutBook(bookId, checkedOutByStudent);
     }
 }

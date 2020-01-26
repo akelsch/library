@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/book-instances")
 public class BookInstanceController {
 
-    public final CatalogueService catalogueService;
+    private final CatalogueService catalogueService;
 
     @GetMapping("/{isbn}")
     public Iterable<BookInstance> listAllBookInstances(@PathVariable String isbn) {

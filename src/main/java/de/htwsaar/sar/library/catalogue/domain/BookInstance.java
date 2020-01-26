@@ -13,7 +13,7 @@ public class BookInstance {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private UUID bookId;
 
     private String isbn;
 }

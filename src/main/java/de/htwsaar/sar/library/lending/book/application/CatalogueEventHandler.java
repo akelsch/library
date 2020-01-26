@@ -18,7 +18,7 @@ public class CatalogueEventHandler {
     @EventListener
     public void handleBookInstanceAddedToCatalogueEvent(BookInstanceAddedToCatalogueEvent event) {
         BookInstance bookInstance = event.getBookInstance();
-        log.info("Received new BookInstanceAddedToCatalogueEvent with ID {}", bookInstance.getId());
-        bookService.saveBookInstance(bookInstance);
+        log.info("Received new BookInstanceAddedToCatalogueEvent with ID {}", bookInstance.getBookId());
+        bookService.saveNewBookInstance(bookInstance);
     }
 }

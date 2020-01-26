@@ -7,7 +7,7 @@ import java.util.UUID;
 @Value
 public class CheckedOutBook implements Book {
 
-    private UUID id;
+    private final UUID bookId;
 
-    private UUID byStudent;
+    private final Long student;
 }

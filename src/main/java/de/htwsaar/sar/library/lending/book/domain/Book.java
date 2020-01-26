@@ -4,5 +4,5 @@ import java.util.UUID;
 
 public interface Book {
 
-    UUID getId();
+    UUID getBookId();
 }

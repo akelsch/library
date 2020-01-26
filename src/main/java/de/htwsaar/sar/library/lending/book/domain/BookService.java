@@ -13,9 +13,9 @@ public class BookService {
 
     private final BookDatabaseEntityRepository bookDatabaseEntityRepository;
 
-    public void saveBookInstance(BookInstance bookInstance) {
+    public void saveNewBookInstance(BookInstance bookInstance) {
         BookDatabaseEntity bookDatabaseEntity = new BookDatabaseEntity();
-        bookDatabaseEntity.setBookId(bookInstance.getId());
+        bookDatabaseEntity.setBookId(bookInstance.getBookId());
         bookDatabaseEntity.setBookState(BookState.AVAILABLE);
         bookDatabaseEntityRepository.save(bookDatabaseEntity);
     }
