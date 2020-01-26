@@ -36,7 +36,4 @@ public class BookDatabaseEntity {
         return new CheckedOutBook(bookId, checkOutByStudent);
     }
 
-    private enum BookState {
-        AVAILABLE, CHECKED_OUT
-    }
 }
