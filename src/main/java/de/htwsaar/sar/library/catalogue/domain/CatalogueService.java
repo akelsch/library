@@ -1,6 +1,7 @@
 package de.htwsaar.sar.library.catalogue.domain;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -9,6 +10,8 @@ public class CatalogueService {
 
     private final BookRepository bookRepository;
     private final BookInstanceRepository bookInstanceRepository;
+
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     public Iterable<Book> findAllBooks() {
         return bookRepository.findAll();
@@ -23,6 +26,8 @@ public class CatalogueService {
     }
 
     public BookInstance saveBookInstance(BookInstance bookInstance) {
-        return bookInstanceRepository.save(bookInstance);
+        bookInstanceRepository.save(bookInstance);
+        applicationEventPublisher.publishEvent(new BookInstanceAddedToCatalogueEvent(this, bookInstance));
+        return bookInstance;
     }
 }
