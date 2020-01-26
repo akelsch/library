@@ -3,6 +3,7 @@ package de.htwsaar.sar.library.lending.book.domain;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;
 
@@ -11,25 +12,28 @@ import java.util.UUID;
 public class BookDatabaseEntity {
 
     @Id
-    private UUID id;
+    @GeneratedValue
+    private Long id;
 
-    private BookState state;
+    private UUID bookId;
+
+    private BookState bookState;
 
     private UUID checkOutByStudent;
 
     public Book toDomainModel() {
-        return switch (state) {
+        return switch (bookState) {
             case AVAILABLE -> toAvailableBook();
             case CHECKED_OUT -> toCheckedOutBook();
         };
     }
 
     private AvailableBook toAvailableBook() {
-        return new AvailableBook(id);
+        return new AvailableBook(bookId);
     }
 
     private CheckedOutBook toCheckedOutBook() {
-        return new CheckedOutBook(id, checkOutByStudent);
+        return new CheckedOutBook(bookId, checkOutByStudent);
     }
 
     private enum BookState {
