@@ -4,6 +4,9 @@ import de.htwsaar.sar.library.catalogue.domain.BookInstance;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @RequiredArgsConstructor
 @Service
 public class BookService {
@@ -15,5 +18,9 @@ public class BookService {
         bookDatabaseEntity.setBookId(bookInstance.getId());
         bookDatabaseEntity.setBookState(BookState.AVAILABLE);
         bookDatabaseEntityRepository.save(bookDatabaseEntity);
+    }
+
+    public Optional<BookDatabaseEntity> findBookDatabaseEntityByBookId(UUID bookId) {
+        return bookDatabaseEntityRepository.findByBookId(bookId);
     }
 }

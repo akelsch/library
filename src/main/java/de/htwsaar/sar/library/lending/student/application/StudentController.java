@@ -26,10 +26,8 @@ public class StudentController {
     }
 
     @PostMapping("/{studentNumber}/checkout")
-    public void checkoutBook(@PathVariable String studentNumber, @RequestBody BookDatabaseEntity bookDatabaseEntity) {
-        // find book
-        // check if available
-        // checkout
+    public void checkoutBook(@PathVariable Long studentNumber, @RequestBody BookDatabaseEntity bookDatabaseEntity) {
+        studentService.checkoutBook(studentNumber, bookDatabaseEntity);
     }
 
     @PostMapping("/{studentNumber}/return")

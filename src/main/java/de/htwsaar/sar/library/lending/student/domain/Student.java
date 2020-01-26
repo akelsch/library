@@ -1,11 +1,10 @@
 package de.htwsaar.sar.library.lending.student.domain;
 
+import de.htwsaar.sar.library.lending.book.domain.BookDatabaseEntity;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,5 +17,10 @@ public class Student {
 
     private String name;
 
-    // private List<UUID> checkouts;
+    @OneToMany
+    private List<BookDatabaseEntity> checkouts;
+
+    public void addCheckout(BookDatabaseEntity book) {
+        checkouts.add(book);
+    }
 }

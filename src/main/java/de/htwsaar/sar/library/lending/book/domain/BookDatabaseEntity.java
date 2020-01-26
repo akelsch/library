@@ -35,5 +35,4 @@ public class BookDatabaseEntity {
     private CheckedOutBook toCheckedOutBook() {
         return new CheckedOutBook(bookId, checkOutByStudent);
     }
-
 }
