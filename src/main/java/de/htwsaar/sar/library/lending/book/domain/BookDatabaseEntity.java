@@ -18,14 +18,10 @@ public class BookDatabaseEntity {
     private UUID checkOutByStudent;
 
     public Book toDomainModel() {
-        switch (state) {
-            case AVAILABLE:
-                return toAvailableBook();
-            case CHECKED_OUT:
-                return toCheckedOutBook();
-        }
-
-        return null;
+        return switch (state) {
+            case AVAILABLE -> toAvailableBook();
+            case CHECKED_OUT -> toCheckedOutBook();
+        };
     }
 
     private AvailableBook toAvailableBook() {
