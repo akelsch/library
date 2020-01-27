@@ -24,6 +24,6 @@ public class StudentEventHandler {
 
         bookEntity.setBookState(BookEntity.BookState.CHECKED_OUT);
         bookEntity.setCheckedOutByStudent(studentNumber);
-        bookEntityService.updateBookEntity(bookEntity);
+        bookEntityService.saveBookEntity(bookEntity);
     }
 }

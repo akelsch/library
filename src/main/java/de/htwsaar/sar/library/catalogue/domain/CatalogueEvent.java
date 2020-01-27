@@ -3,12 +3,10 @@ package de.htwsaar.sar.library.catalogue.domain;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 
-public interface BookInstanceEvent {
-
-    BookInstance getBookInstance();
+public interface CatalogueEvent {
 
     @Getter
-    class BookInstanceAdded extends ApplicationEvent implements BookInstanceEvent {
+    class BookInstanceAdded extends ApplicationEvent implements CatalogueEvent {
 
         private final BookInstance bookInstance;
 
