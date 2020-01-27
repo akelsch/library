@@ -30,7 +30,7 @@ public class CatalogueService {
     public BookInstance saveBookInstance(BookInstance bookInstance) {
         Optional<Book> book = bookRepository.findById(bookInstance.getIsbn());
         if (book.isEmpty()) {
-            throw new IllegalStateException("Creating book instance for non-existing book!");
+            throw new IllegalStateException("Creating book instance for a non-existing book!");
         }
 
         bookInstanceRepository.save(bookInstance);
