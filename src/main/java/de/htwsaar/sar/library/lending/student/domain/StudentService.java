@@ -2,6 +2,7 @@ package de.htwsaar.sar.library.lending.student.domain;
 
 import de.htwsaar.sar.library.lending.book.domain.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,6 +14,8 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
     private final BookService bookService;
+
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     public Iterable<Student> findAllStudents() {
         return studentRepository.findAll();
@@ -31,9 +34,7 @@ public class StudentService {
             BookDatabaseEntity book = b.get();
 
             if (book.toDomainModel() instanceof AvailableBook) {
-                book.setBookState(BookState.CHECKED_OUT);
-                book.setCheckedOutByStudent(student.getStudentNumber());
-                bookService.updateBookDatabaseEntity(book);
+                applicationEventPublisher.publishEvent(new StudentEvent.BookCheckedOut(this, student.getStudentNumber(), book));
             } else {
                 throw new IllegalStateException("Checking out an unavailable book!");
             }
