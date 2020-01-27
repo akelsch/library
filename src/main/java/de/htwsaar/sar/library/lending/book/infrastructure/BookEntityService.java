@@ -1,7 +1,6 @@
 package de.htwsaar.sar.library.lending.book.infrastructure;
 
 import de.htwsaar.sar.library.catalogue.domain.BookInstance;
-import de.htwsaar.sar.library.lending.book.domain.BookState;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,7 @@ public class BookEntityService {
     public void saveNewBookInstance(BookInstance bookInstance) {
         BookEntity bookEntity = new BookEntity();
         bookEntity.setBookId(bookInstance.getBookId());
-        bookEntity.setBookState(BookState.AVAILABLE);
+        bookEntity.setBookState(BookEntity.BookState.AVAILABLE);
         bookEntityRepository.save(bookEntity);
     }
 

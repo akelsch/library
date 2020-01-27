@@ -2,7 +2,6 @@ package de.htwsaar.sar.library.lending.book.infrastructure;
 
 import de.htwsaar.sar.library.lending.book.domain.AvailableBook;
 import de.htwsaar.sar.library.lending.book.domain.Book;
-import de.htwsaar.sar.library.lending.book.domain.BookState;
 import de.htwsaar.sar.library.lending.book.domain.CheckedOutBook;
 import lombok.Data;
 
@@ -38,5 +37,9 @@ public class BookEntity {
 
     private CheckedOutBook toCheckedOutBook() {
         return new CheckedOutBook(bookId, checkedOutByStudent);
+    }
+
+    public enum BookState {
+        AVAILABLE, CHECKED_OUT
     }
 }

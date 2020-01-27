@@ -1,6 +1,5 @@
 package de.htwsaar.sar.library.lending.student.application;
 
-import de.htwsaar.sar.library.lending.book.domain.BookState;
 import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
 import de.htwsaar.sar.library.lending.book.infrastructure.BookEntityService;
 import de.htwsaar.sar.library.lending.student.domain.StudentEvent;
@@ -23,7 +22,7 @@ public class StudentEventHandler {
 
         log.info("Received new BookCheckedOut event for Student {} and Book {}", studentNumber, book.getBookId());
 
-        book.setBookState(BookState.CHECKED_OUT);
+        book.setBookState(BookEntity.BookState.CHECKED_OUT);
         book.setCheckedOutByStudent(studentNumber);
         bookEntityService.updateBookEntity(book);
     }
