@@ -34,7 +34,7 @@ public class CatalogueService {
         }
 
         bookInstanceRepository.save(bookInstance);
-        applicationEventPublisher.publishEvent(new BookInstanceAddedToCatalogueEvent(this, bookInstance));
+        applicationEventPublisher.publishEvent(new BookInstanceEvent.BookInstanceAdded(this, bookInstance));
         return bookInstance;
     }
 }

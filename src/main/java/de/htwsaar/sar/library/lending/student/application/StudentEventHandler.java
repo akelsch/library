@@ -17,11 +17,11 @@ public class StudentEventHandler {
     private final BookEntityService bookEntityService;
 
     @EventListener
-    public void handleBookInstanceAddedToCatalogueEvent(StudentEvent.BookCheckedOut event) {
+    public void handleBookCheckedOutEvent(StudentEvent.BookCheckedOut event) {
         Long studentNumber = event.getStudentNumber();
         BookEntity book = event.getBook();
 
-        log.info("Received new BookCheckedOut for Student {} and Book {}", studentNumber, book.getBookId());
+        log.info("Received new BookCheckedOut event for Student {} and Book {}", studentNumber, book.getBookId());
 
         book.setBookState(BookState.CHECKED_OUT);
         book.setCheckedOutByStudent(studentNumber);
