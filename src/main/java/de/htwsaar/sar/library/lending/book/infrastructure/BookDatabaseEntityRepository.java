@@ -1,4 +1,4 @@
-package de.htwsaar.sar.library.lending.book.domain;
+package de.htwsaar.sar.library.lending.book.infrastructure;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

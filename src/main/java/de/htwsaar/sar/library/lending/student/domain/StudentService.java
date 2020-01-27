@@ -1,6 +1,8 @@
 package de.htwsaar.sar.library.lending.student.domain;
 
-import de.htwsaar.sar.library.lending.book.domain.*;
+import de.htwsaar.sar.library.lending.book.domain.AvailableBook;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookDatabaseEntity;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;

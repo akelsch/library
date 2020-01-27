@@ -1,6 +1,7 @@
-package de.htwsaar.sar.library.lending.book.domain;
+package de.htwsaar.sar.library.lending.book.infrastructure;
 
 import de.htwsaar.sar.library.catalogue.domain.BookInstance;
+import de.htwsaar.sar.library.lending.book.domain.BookState;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

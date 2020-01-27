@@ -1,6 +1,6 @@
 package de.htwsaar.sar.library.lending.student.domain;
 
-import de.htwsaar.sar.library.lending.book.domain.BookDatabaseEntity;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookDatabaseEntity;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 

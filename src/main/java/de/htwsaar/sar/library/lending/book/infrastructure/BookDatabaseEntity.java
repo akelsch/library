@@ -1,5 +1,9 @@
-package de.htwsaar.sar.library.lending.book.domain;
+package de.htwsaar.sar.library.lending.book.infrastructure;
 
+import de.htwsaar.sar.library.lending.book.domain.AvailableBook;
+import de.htwsaar.sar.library.lending.book.domain.Book;
+import de.htwsaar.sar.library.lending.book.domain.BookState;
+import de.htwsaar.sar.library.lending.book.domain.CheckedOutBook;
 import lombok.Data;
 
 import javax.persistence.Entity;

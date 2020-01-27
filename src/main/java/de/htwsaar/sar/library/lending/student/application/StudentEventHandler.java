@@ -1,8 +1,8 @@
 package de.htwsaar.sar.library.lending.student.application;
 
-import de.htwsaar.sar.library.lending.book.domain.BookDatabaseEntity;
-import de.htwsaar.sar.library.lending.book.domain.BookService;
 import de.htwsaar.sar.library.lending.book.domain.BookState;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookDatabaseEntity;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookService;
 import de.htwsaar.sar.library.lending.student.domain.StudentEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

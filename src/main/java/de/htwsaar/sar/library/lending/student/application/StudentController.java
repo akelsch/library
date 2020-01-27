@@ -1,6 +1,6 @@
 package de.htwsaar.sar.library.lending.student.application;
 
-import de.htwsaar.sar.library.lending.book.domain.BookDatabaseEntity;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookDatabaseEntity;
 import de.htwsaar.sar.library.lending.student.domain.Student;
 import de.htwsaar.sar.library.lending.student.domain.StudentService;
 import lombok.RequiredArgsConstructor;
