@@ -1,8 +1,8 @@
-package de.htwsaar.sar.library.lending.student.application;
+package de.htwsaar.sar.library.lending.student.ui;
 
 import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
+import de.htwsaar.sar.library.lending.student.application.StudentService;
 import de.htwsaar.sar.library.lending.student.domain.Student;
-import de.htwsaar.sar.library.lending.student.domain.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

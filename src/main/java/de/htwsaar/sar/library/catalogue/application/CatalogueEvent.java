@@ -1,5 +1,6 @@
-package de.htwsaar.sar.library.catalogue.domain;
+package de.htwsaar.sar.library.catalogue.application;
 
+import de.htwsaar.sar.library.catalogue.domain.BookInstance;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 

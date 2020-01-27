@@ -1,4 +1,4 @@
-package de.htwsaar.sar.library.lending.student.domain;
+package de.htwsaar.sar.library.lending.student.application;
 
 import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
 import lombok.Getter;

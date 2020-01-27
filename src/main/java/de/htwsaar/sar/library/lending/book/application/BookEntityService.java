@@ -1,5 +1,7 @@
-package de.htwsaar.sar.library.lending.book.infrastructure;
+package de.htwsaar.sar.library.lending.book.application;
 
+import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

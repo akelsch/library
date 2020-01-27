@@ -1,9 +1,8 @@
 package de.htwsaar.sar.library.lending.book.application;
 
+import de.htwsaar.sar.library.catalogue.application.CatalogueEvent;
 import de.htwsaar.sar.library.catalogue.domain.BookInstance;
-import de.htwsaar.sar.library.catalogue.domain.CatalogueEvent;
 import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
-import de.htwsaar.sar.library.lending.book.infrastructure.BookEntityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;

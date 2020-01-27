@@ -1,7 +1,7 @@
-package de.htwsaar.sar.library.catalogue.application;
+package de.htwsaar.sar.library.catalogue.ui;
 
+import de.htwsaar.sar.library.catalogue.application.CatalogueService;
 import de.htwsaar.sar.library.catalogue.domain.Book;
-import de.htwsaar.sar.library.catalogue.domain.CatalogueService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-interface BookEntityRepository extends CrudRepository<BookEntity, UUID> {
+public interface BookEntityRepository extends CrudRepository<BookEntity, UUID> {
 
     Optional<BookEntity> findByBookId(UUID bookId);
 }

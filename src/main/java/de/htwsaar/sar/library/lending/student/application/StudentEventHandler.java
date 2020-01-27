@@ -1,8 +1,7 @@
 package de.htwsaar.sar.library.lending.student.application;
 
+import de.htwsaar.sar.library.lending.book.application.BookEntityService;
 import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
-import de.htwsaar.sar.library.lending.book.infrastructure.BookEntityService;
-import de.htwsaar.sar.library.lending.student.domain.StudentEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.EventListener;

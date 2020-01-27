@@ -1,5 +1,9 @@
-package de.htwsaar.sar.library.catalogue.domain;
+package de.htwsaar.sar.library.catalogue.application;
 
+import de.htwsaar.sar.library.catalogue.domain.Book;
+import de.htwsaar.sar.library.catalogue.domain.BookInstance;
+import de.htwsaar.sar.library.catalogue.infrastructure.BookInstanceRepository;
+import de.htwsaar.sar.library.catalogue.infrastructure.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
