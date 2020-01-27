@@ -18,12 +18,12 @@ public class StudentEventHandler {
     @EventListener
     public void handleBookCheckedOutEvent(StudentEvent.BookCheckedOut event) {
         Long studentNumber = event.getStudentNumber();
-        BookEntity book = event.getBook();
+        BookEntity bookEntity = event.getBookEntity();
 
-        log.info("Received new BookCheckedOut event for Student {} and Book {}", studentNumber, book.getBookId());
+        log.info("Received new BookCheckedOut event for Student {} and Book {}", studentNumber, bookEntity.getBookId());
 
-        book.setBookState(BookEntity.BookState.CHECKED_OUT);
-        book.setCheckedOutByStudent(studentNumber);
-        bookEntityService.updateBookEntity(book);
+        bookEntity.setBookState(BookEntity.BookState.CHECKED_OUT);
+        bookEntity.setCheckedOutByStudent(studentNumber);
+        bookEntityService.updateBookEntity(bookEntity);
     }
 }

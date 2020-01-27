@@ -12,12 +12,12 @@ public interface StudentEvent {
     class BookCheckedOut extends ApplicationEvent implements StudentEvent {
 
         private final Long studentNumber;
-        private final BookEntity book;
+        private final BookEntity bookEntity;
 
-        public BookCheckedOut(Object source, Long studentNumber, BookEntity book) {
+        public BookCheckedOut(Object source, Long studentNumber, BookEntity bookEntity) {
             super(source);
             this.studentNumber = studentNumber;
-            this.book = book;
+            this.bookEntity = bookEntity;
         }
     }
 }

@@ -33,10 +33,10 @@ public class StudentService {
 
         if (s.isPresent() && b.isPresent()) {
             Student student = s.get();
-            BookEntity book = b.get();
+            BookEntity bookEntity = b.get();
 
-            if (book.toDomainModel() instanceof AvailableBook) {
-                applicationEventPublisher.publishEvent(new StudentEvent.BookCheckedOut(this, student.getStudentNumber(), book));
+            if (bookEntity.toDomainModel() instanceof AvailableBook) {
+                applicationEventPublisher.publishEvent(new StudentEvent.BookCheckedOut(this, student.getStudentNumber(), bookEntity));
             } else {
                 throw new IllegalStateException("Checking out an unavailable book!");
             }
