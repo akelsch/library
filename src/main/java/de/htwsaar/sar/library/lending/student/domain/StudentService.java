@@ -1,11 +1,11 @@
 package de.htwsaar.sar.library.lending.student.domain;
 
-import de.htwsaar.sar.library.lending.book.domain.BookDatabaseEntity;
-import de.htwsaar.sar.library.lending.book.domain.BookService;
+import de.htwsaar.sar.library.lending.book.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -22,17 +22,21 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public void checkoutBook(Long studentNumber, BookDatabaseEntity bookDatabaseEntity) {
+    public void checkoutBook(Long studentNumber, UUID bookId) {
         Optional<Student> s = studentRepository.findById(studentNumber);
-        Optional<BookDatabaseEntity> b = bookService.findBookDatabaseEntityByBookId(bookDatabaseEntity.getBookId());
+        Optional<BookDatabaseEntity> b = bookService.findBookDatabaseEntityByBookId(bookId);
 
         if (s.isPresent() && b.isPresent()) {
-            // TODO check if book is available
             Student student = s.get();
             BookDatabaseEntity book = b.get();
 
-            student.addCheckout(book);
-            studentRepository.save(student);
+            if (book.toDomainModel() instanceof AvailableBook) {
+                book.setBookState(BookState.CHECKED_OUT);
+                book.setCheckedOutByStudent(student.getStudentNumber());
+                bookService.updateBookDatabaseEntity(book);
+            } else {
+                throw new IllegalStateException("Checking out an unavailable book!");
+            }
         }
     }
 }

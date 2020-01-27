@@ -23,4 +23,8 @@ public class BookService {
     public Optional<BookDatabaseEntity> findBookDatabaseEntityByBookId(UUID bookId) {
         return bookDatabaseEntityRepository.findByBookId(bookId);
     }
+
+    public void updateBookDatabaseEntity(BookDatabaseEntity bookDatabaseEntity) {
+        bookDatabaseEntityRepository.save(bookDatabaseEntity);
+    }
 }

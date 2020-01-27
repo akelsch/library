@@ -1,5 +1,5 @@
 package de.htwsaar.sar.library.lending.book.domain;
 
-enum BookState {
+public enum BookState {
     AVAILABLE, CHECKED_OUT
 }

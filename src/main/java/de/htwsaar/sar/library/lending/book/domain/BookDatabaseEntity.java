@@ -13,7 +13,7 @@ public class BookDatabaseEntity {
 
     @Id
     @GeneratedValue
-    private Long row;
+    private Long rowNumber;
 
     private UUID bookId;
 
