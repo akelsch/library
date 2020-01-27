@@ -1,8 +1,8 @@
 package de.htwsaar.sar.library.lending.student.application;
 
 import de.htwsaar.sar.library.lending.book.domain.BookState;
-import de.htwsaar.sar.library.lending.book.infrastructure.BookDatabaseEntity;
-import de.htwsaar.sar.library.lending.book.infrastructure.BookService;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookEntityService;
 import de.htwsaar.sar.library.lending.student.domain.StudentEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,17 +14,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudentEventHandler {
 
-    private final BookService bookService;
+    private final BookEntityService bookEntityService;
 
     @EventListener
     public void handleBookInstanceAddedToCatalogueEvent(StudentEvent.BookCheckedOut event) {
         Long studentNumber = event.getStudentNumber();
-        BookDatabaseEntity book = event.getBook();
+        BookEntity book = event.getBook();
 
         log.info("Received new BookCheckedOut for Student {} and Book {}", studentNumber, book.getBookId());
 
         book.setBookState(BookState.CHECKED_OUT);
         book.setCheckedOutByStudent(studentNumber);
-        bookService.updateBookDatabaseEntity(book);
+        bookEntityService.updateBookEntity(book);
     }
 }

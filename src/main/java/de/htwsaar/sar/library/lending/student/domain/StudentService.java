@@ -1,8 +1,8 @@
 package de.htwsaar.sar.library.lending.student.domain;
 
 import de.htwsaar.sar.library.lending.book.domain.AvailableBook;
-import de.htwsaar.sar.library.lending.book.infrastructure.BookDatabaseEntity;
-import de.htwsaar.sar.library.lending.book.infrastructure.BookService;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.UUID;
 public class StudentService {
 
     private final StudentRepository studentRepository;
-    private final BookService bookService;
+    private final BookEntityService bookEntityService;
 
     private final ApplicationEventPublisher applicationEventPublisher;
 
@@ -29,11 +29,11 @@ public class StudentService {
 
     public void checkoutBook(Long studentNumber, UUID bookId) {
         Optional<Student> s = studentRepository.findById(studentNumber);
-        Optional<BookDatabaseEntity> b = bookService.findBookDatabaseEntityByBookId(bookId);
+        Optional<BookEntity> b = bookEntityService.findBookEntityByBookId(bookId);
 
         if (s.isPresent() && b.isPresent()) {
             Student student = s.get();
-            BookDatabaseEntity book = b.get();
+            BookEntity book = b.get();
 
             if (book.toDomainModel() instanceof AvailableBook) {
                 applicationEventPublisher.publishEvent(new StudentEvent.BookCheckedOut(this, student.getStudentNumber(), book));

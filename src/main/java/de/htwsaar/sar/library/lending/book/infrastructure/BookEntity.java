@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @Data
 @Entity
-public class BookDatabaseEntity {
+public class BookEntity {
 
     @Id
     @GeneratedValue

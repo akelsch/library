@@ -1,6 +1,6 @@
 package de.htwsaar.sar.library.lending.student.application;
 
-import de.htwsaar.sar.library.lending.book.infrastructure.BookDatabaseEntity;
+import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
 import de.htwsaar.sar.library.lending.student.domain.Student;
 import de.htwsaar.sar.library.lending.student.domain.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +31,7 @@ public class StudentController {
     }
 
     @PostMapping("/{studentNumber}/return")
-    public void returnBook(@PathVariable String studentNumber, @RequestBody BookDatabaseEntity bookDatabaseEntity) {
+    public void returnBook(@PathVariable String studentNumber, @RequestBody BookEntity bookEntity) {
         // find book
         // check if book is checked-out by student
         // return
