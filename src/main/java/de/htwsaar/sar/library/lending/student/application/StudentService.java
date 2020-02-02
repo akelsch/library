@@ -11,8 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -29,6 +31,13 @@ public class StudentService {
 
     public Student saveStudent(Student student) {
         return studentRepository.save(student);
+    }
+
+    public List<Book> findAllCheckedOutBooksForStudent(Long studentNumber) {
+        return bookEntityService.findAllCheckedOutBooks().stream()
+                .filter(b -> b.getCheckedOutByStudent().equals(studentNumber))
+                .map(BookEntity::toDomainModel)
+                .collect(Collectors.toList());
     }
 
     public void checkoutBook(Long studentNumber, UUID bookId) {

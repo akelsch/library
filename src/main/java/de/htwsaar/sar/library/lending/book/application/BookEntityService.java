@@ -5,6 +5,7 @@ import de.htwsaar.sar.library.lending.book.infrastructure.BookEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -20,5 +21,9 @@ public class BookEntityService {
 
     public Optional<BookEntity> findBookEntityByBookId(UUID bookId) {
         return bookEntityRepository.findByBookId(bookId);
+    }
+
+    public List<BookEntity> findAllCheckedOutBooks() {
+        return bookEntityRepository.findAllByBookStateEquals(BookEntity.BookState.CHECKED_OUT);
     }
 }
