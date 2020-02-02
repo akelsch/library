@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "6b0080e0-fb8d-4deb-a605-b4e1302683a6",
+		"name": "Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Catalogue Context",
+			"item": [
+				{
+					"name": "Create Example Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"isbn\": \"978-0123456789\",\n\t\"author\": \"Uncle Bob\",\n\t\"title\": \"Clean Code\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{library_host}}/books",
+							"host": [
+								"{{library_host}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{library_host}}/books",
+							"host": [
+								"{{library_host}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Example Book Instance",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6859c4d-d1f5-4aae-9a51-25f627d1847d",
+								"exec": [
+									"pm.collectionVariables.set(\"book_id\", pm.response.json().bookId);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"isbn\": \"978-0123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{library_host}}/book-instances",
+							"host": [
+								"{{library_host}}"
+							],
+							"path": [
+								"book-instances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Example Book Instances",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{library_host}}/book-instances/978-0123456789",
+							"host": [
+								"{{library_host}}"
+							],
+							"path": [
+								"book-instances",
+								"978-0123456789"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Lending Context",
+			"item": [
+				{
+					"name": "Create Example Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Max Mustermann\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{library_host}}/students",
+							"host": [
+								"{{library_host}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Students",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{library_host}}/students",
+							"host": [
+								"{{library_host}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout Example Book Instance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{library_host}}/students/4711/checkouts/{{book_id}}",
+							"host": [
+								"{{library_host}}"
+							],
+							"path": [
+								"students",
+								"4711",
+								"checkouts",
+								"{{book_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Example Student Checkouts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{library_host}}/students/4711/checkouts",
+							"host": [
+								"{{library_host}}"
+							],
+							"path": [
+								"students",
+								"4711",
+								"checkouts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Return Example Book Instance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{library_host}}/students/4711/return/{{book_id}}",
+							"host": [
+								"{{library_host}}"
+							],
+							"path": [
+								"students",
+								"4711",
+								"return",
+								"{{book_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d81b3ee2-96be-4eb2-9642-03fd69da7340",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d5eaa07b-7342-4a14-9ac0-2037207ca1be",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "325f2753-ba07-45e0-ba90-01cdcc36fff1",
+			"key": "library_host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"id": "38e2e3e5-52fe-45e1-b32b-ef715335dfb0",
+			"key": "book_id",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
