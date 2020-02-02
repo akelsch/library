@@ -9,5 +9,5 @@ public class CheckedOutBook implements Book {
 
     private final UUID bookId;
 
-    private final Long student;
+    private final Long studentNumber;
 }

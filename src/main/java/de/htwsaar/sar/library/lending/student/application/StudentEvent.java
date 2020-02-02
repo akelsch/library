@@ -20,4 +20,17 @@ public interface StudentEvent {
             this.bookEntity = bookEntity;
         }
     }
+
+    @Getter
+    class BookReturned extends ApplicationEvent implements StudentEvent {
+
+        private final Long studentNumber;
+        private final BookEntity bookEntity;
+
+        public BookReturned(Object source, Long studentNumber, BookEntity bookEntity) {
+            super(source);
+            this.studentNumber = studentNumber;
+            this.bookEntity = bookEntity;
+        }
+    }
 }

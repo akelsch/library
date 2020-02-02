@@ -3,6 +3,7 @@ package de.htwsaar.sar.library.lending.student.application;
 import de.htwsaar.sar.library.lending.book.application.BookEntityService;
 import de.htwsaar.sar.library.lending.book.domain.AvailableBook;
 import de.htwsaar.sar.library.lending.book.domain.Book;
+import de.htwsaar.sar.library.lending.book.domain.CheckedOutBook;
 import de.htwsaar.sar.library.lending.book.infrastructure.BookEntity;
 import de.htwsaar.sar.library.lending.student.domain.Student;
 import de.htwsaar.sar.library.lending.student.infrastructure.StudentRepository;
@@ -47,5 +48,27 @@ public class StudentService {
         }
 
         applicationEventPublisher.publishEvent(new StudentEvent.BookCheckedOut(this, studentNumber, bookEntity.get()));
+    }
+
+    public void returnBook(Long studentNumber, UUID bookId) {
+        Optional<Student> student = studentRepository.findById(studentNumber);
+        if (student.isEmpty()) {
+            throw new IllegalStateException("Returning with a non-existing student!");
+        }
+
+        Optional<BookEntity> bookEntity = bookEntityService.findBookEntityByBookId(bookId);
+        if (bookEntity.isEmpty()) {
+            throw new IllegalStateException("Returning a non-existing book!");
+        }
+
+        Book book = bookEntity.map(BookEntity::toDomainModel).get();
+        if (!(book instanceof CheckedOutBook)) {
+            throw new IllegalStateException("Returning a book that is not checked out!");
+        }
+
+        CheckedOutBook checkedOutBook = (CheckedOutBook) book;
+        if (studentNumber.equals(checkedOutBook.getStudentNumber())) {
+            applicationEventPublisher.publishEvent(new StudentEvent.BookReturned(this, studentNumber, bookEntity.get()));
+        }
     }
 }

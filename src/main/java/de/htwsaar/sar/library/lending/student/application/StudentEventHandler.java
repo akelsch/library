@@ -25,4 +25,16 @@ public class StudentEventHandler {
         bookEntity.setCheckedOutByStudent(studentNumber);
         bookEntityService.saveBookEntity(bookEntity);
     }
+
+    @EventListener
+    public void handleBookReturnedEvent(StudentEvent.BookReturned event) {
+        Long studentNumber = event.getStudentNumber();
+        BookEntity bookEntity = event.getBookEntity();
+
+        log.info("Received new BookReturned event for Student {} and Book {}", studentNumber, bookEntity.getBookId());
+
+        bookEntity.setBookState(BookEntity.BookState.AVAILABLE);
+        bookEntity.setCheckedOutByStudent(null);
+        bookEntityService.saveBookEntity(bookEntity);
+    }
 }
