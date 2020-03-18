@@ -10,4 +10,4 @@ jobs:
         with:
           java-version: 14
       - name: Build with Maven
-        run: mvn --batch-mode clean verify
+        run: mvn --batch-mode --no-transfer-progress verify
